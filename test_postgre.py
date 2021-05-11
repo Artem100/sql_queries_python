@@ -11,7 +11,6 @@ session = Session()
 # Create table
 Base = declarative_base()
 
-
 class Student(Base):
 
     __tablename__ = 'student'
@@ -24,3 +23,18 @@ class Student(Base):
 
 # Send query for creation table
 Base.metadata.create_all(engine)
+
+
+# Insert data to table
+
+student1 = Student(name='Ashot', age=20, grade='Sixth')
+student2 = Student(name='Ashot2', age=50, grade='1Sixth')
+student3 = Student(name='Ashot3', age=40, grade='2Sixth')
+
+# To add 1 row to table
+# session.add(student1)
+
+# To add several rows to table
+session.add_all([student1, student2, student3])
+
+session.commit()
